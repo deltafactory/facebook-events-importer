@@ -1,13 +1,12 @@
 <?php get_header(); ?>
 <?php if (have_posts()) :
-$fbe800 = get_option("facebook_events_pro_version");  if($fbe800){  }else{ exit; }
    while (have_posts()) :
       the_post();
-          $fb_link = get_fbe_field('fb_event_uri'); 
-          $tickets = get_fbe_field('ticket_uri'); 
+          $fb_link = get_fbe_field('fb_event_uri');
+          $tickets = get_fbe_field('ticket_uri');
           $event_title = get_the_title();
 		   $event_desc = apply_filters( 'the_content', get_the_content() );
-		  
+
 		  $event_image = get_fbe_image('cover');
 		  $event_start_date = get_fbe_date('event_starts','M j, Y');
 		  $event_start_time = get_fbe_date('start_time','g:i a');
@@ -25,25 +24,25 @@ $fbe800 = get_option("facebook_events_pro_version");  if($fbe800){  }else{ exit;
 	      $venue_email = get_fbe_field( 'venue_email');
 	      $geo_latitude = get_fbe_field( 'geo_latitude');
 	      $geo_longitude = get_fbe_field( 'geo_longitude');
-	      $event_image = get_fbe_image('full'); 
-?> 
+	      $event_image = get_fbe_image('full');
+?>
 
-<div class="group"></div>      
+<div class="group"></div>
 <div class="fbegrid fbegrid-pad">
 	<div class="fbecol-8-12">
 	<?php if ($event_image ){ ?>
 	<div class="fbe_single_event_image_wrap">
-	<img class="fbe-full-width" src="<?php echo $event_image; ?>" /> 
-	</div>	
-	<hr />	
+	<img class="fbe-full-width" src="<?php echo $event_image; ?>" />
+	</div>
+	<hr />
 	<?php } ?>
 	<h1 class="fbe_single_title"> <?php echo $event_title; ?></h1>
 	<div id="fbe_single_date"><?php echo $event_start_date; if($event_start_time){echo ' @ '.$event_start_time; } ?>
     <?php if($event_end_date){echo '&nbsp;&mdash;&nbsp;&nbsp;'. $event_end_date; } if($event_end_time){echo ' @ '.$event_end_time; } ?>
 	</div>
 	<p><?php echo $event_desc ; ?></p>
-    <?php //the_tags( '<div id="fbe_tags">', '', '</div>' ); ?> 
-	<?php if(get_option('fbe_geo_map') == 'true'){ 
+    <?php //the_tags( '<div id="fbe_tags">', '', '</div>' ); ?>
+	<?php if(get_option('fbe_geo_map') == 'true'){
 		if ($LatLng !=','){
 
 		echo '<div class="group"></div><hr/>';
@@ -61,13 +60,13 @@ $fbe800 = get_option("facebook_events_pro_version");  if($fbe800){  }else{ exit;
 			}
 			else
 			{
-			}			
+			}
 		}
-		
-		echo '</br>';		
-		echo '<div id="fbe_map_canvas" style="min-height:500px;"></div>'; 
+
+		echo '</br>';
+		echo '<div id="fbe_map_canvas" style="min-height:500px;"></div>';
 		}
-	} 
+	}
 	?>
 <hr />
 <div class="group"></div>
@@ -78,9 +77,9 @@ $fbe800 = get_option("facebook_events_pro_version");  if($fbe800){  }else{ exit;
 
 	<?php if ( comments_open() || get_comments_number() ) { ?>
 	<div id="comments">
-	<div class="fbe_comments">Post a comment</div>  
+	<div class="fbe_comments">Post a comment</div>
 	<?php comments_template(); ?>
-	</div>  
+	</div>
 	<?php  } ?>
 
 	</div>
@@ -89,7 +88,7 @@ $fbe800 = get_option("facebook_events_pro_version");  if($fbe800){  }else{ exit;
 		<?php if(get_option('fbe_venue') == 'true'){ ?>
 		<?php if($venue_name){ ?>
 		<h2>Event Venue</h2>
-		<hr />	
+		<hr />
 		<ul>
 		<?php if($venue_name){ ?><li><b>Venue </b><br/><?php echo $venue_name; ?></li><?php } ?>
 		<?php if($venue_desc){ ?><li><b>About</b><br/><?php echo $venue_desc; ?></li><?php } ?>
@@ -110,7 +109,7 @@ $fbe800 = get_option("facebook_events_pro_version");  if($fbe800){  }else{ exit;
 			{
 			echo '<li><b>Location</b><br/>'.$address,'</li>';
 			}
-		}	
+		}
 		?>
 		<?php } ?>
 		<?php if($venue_website){ ?><li><b>Website </b><br/><?php echo '<a href="'.$venue_website.'" target="_blank">'.$venue_website.'</a>'; ?></li><?php } ?>
@@ -128,12 +127,12 @@ $fbe800 = get_option("facebook_events_pro_version");  if($fbe800){  }else{ exit;
 	c-8.7,0-15.1,0-23.7,0c45.4,27,96.1,45.4,150.1,45.4c180.3,0,278.6-150.1,278.6-278.6v-11.9C1986.3,217.7,2004.7,199.3,2016.6,177.7
 	z"/>
 </svg></a></li><?php } ?>
-	
+
 		</ul>
 		<?php } ?>
 		<?php } ?>
 		<h2>Event Details</h2>
-		<hr />		
+		<hr />
 		<ul>
 	<?php if(get_option('fbe_venue') == 'false'){ ?>
 
@@ -154,7 +153,7 @@ $fbe800 = get_option("facebook_events_pro_version");  if($fbe800){  }else{ exit;
 			{
 			echo '<li><b>Location</b><br/>'.$address,'</li>';
 			}
-		}	
+		}
 		?>
 		<?php } ?>
 	<?php } ?>
@@ -171,9 +170,9 @@ $fbe800 = get_option("facebook_events_pro_version");  if($fbe800){  }else{ exit;
 <?php  endwhile;
 
 endif;
-wp_reset_query();  
+wp_reset_query();
 ?>
 
-<div class="group"></div> 
+<div class="group"></div>
 
 <?php get_footer(); ?>
